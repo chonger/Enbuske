@@ -5,6 +5,7 @@ import multitool._
 abstract class BaseDistribution {
   def score(t : CSegment) : Double
   var betas : Array[Double] 
+  def resampleBetas(evidence : Array[XMLDoc[CParseTree]]) : Unit
 }
 
 class CohnBase(val lowmem : LowMem, val nSyms : Int, val cutPrior : Double, val uncutPrior : Double) extends BaseDistribution {
@@ -16,7 +17,7 @@ class CohnBase(val lowmem : LowMem, val nSyms : Int, val cutPrior : Double, val 
     betas = b
   }
 
-  def resampleBetas(evidence : Array[XMLDoc[CParseTree]]) = {
+  override def resampleBetas(evidence : Array[XMLDoc[CParseTree]]) : Unit = {
     val cCounts = Array.tabulate(nSyms)(x=>cutPrior)
     val uCounts = Array.tabulate(nSyms)(x=>uncutPrior)
     

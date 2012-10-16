@@ -7,87 +7,76 @@ import scala.collection.mutable.ArrayBuffer
 
 object ESampler {
 
-  def create(filE : String) = {
+  def create(filE : String,typeArr : Array[String], gamma : Double, alphas : Array[Double], theta : Array[Array[Double]]) = {
     val st = new CFGSymbolTable()
     val dox = XMLDoc.read(filE,st)
     val pcfg = new PCFG(st,dox)
-    new ESampler(dox,st,pcfg,1)
+    new ESampler(dox,st,pcfg,typeArr,alphas,gamma,theta)
   }
 
   def continue(filE : String, sampFile : String) = {    
     val st = new CFGSymbolTable()
     val dox = XMLDoc.read(filE,st)
     val pcfg = new PCFG(st,dox)
-    new ESampler(dox,st,pcfg,1,sampFile)
+
+    println("Initializing the sampler with a previously sampled TSG")
+
+    var lines = io.Source.fromFile(sampFile).getLines.toArray
+
+    val gamma = lines(0).toDouble
+    val numTopics = lines(1).toInt
+    val nTypes = lines(2).toInt
+    lines = lines.drop(3)
+
+    val alphas = lines.slice(0,numTopics).map(_.toDouble)
+    lines = lines.drop(numTopics)
+        
+    val typeArr = lines.slice(0,nTypes).map(_.trim).toArray
+    lines = lines.drop(nTypes)
+
+    val theta = 0.until(nTypes).map(x => {
+      0.until(numTopics).map(y => {
+        lines(x * numTopics + y).toDouble
+      }).toArray
+    }).toArray
+    lines = lines.drop(nTypes*numTopics)
+
+    val sampler = new ESampler(dox,st,pcfg,typeArr,alphas,gamma,theta,false)
+
+    sampler.fileLoad(lines)
+
+    sampler
   }
+
 
 }
 
 class ESampler(originalDox : Array[XMLDoc[ParseTree]], 
                val st : CFGSymbolTable,
                val pcfg : PCFG,
-               var numTopics : Int) {
-
-  //initialize with previously sampled model
+               val typeArr : Array[String],
+               alphas : Array[Double],
+               gamma : Double,
+               theta : Array[Array[Double]],
+               autoload : Boolean) {
+  
   def this(originalDox : Array[XMLDoc[ParseTree]], 
-           st : CFGSymbolTable, 
-           pcfg : PCFG, 
-           numTopics : Int,
-           sampleFile : String) = {
+           st : CFGSymbolTable,
+           pcfg : PCFG,
+           typeArr : Array[String],
+           alphas : Array[Double],
+           gamma : Double,
+           theta : Array[Array[Double]]) {
+    this(originalDox,st,pcfg,typeArr,alphas,gamma,theta,true)
+  } 
 
-    this(originalDox,st,pcfg,numTopics)
+  val numTypes = typeArr.length
+  val numTopics = alphas.length
 
-    println("Initializing the sampler with a previously sampled TSG")
-
-    var lines = io.Source.fromFile(sampleFile).getLines.toArray
-
-    val nSyms = lines(0).toInt
-    lines = lines.drop(5)
-    val nTypes = lines(0).toInt
-    lines = lines.drop(nTypes + 1)
-    model.theta0 = 0.until(nTypes).map(x => {
-      0.until(numTopics).map(y => {
-        lines(x * numTopics + y).toDouble
-      }).toArray
-    }).toArray
-    lines = lines.drop(nTypes*numTopics + nSyms)
-
-    model.clear()
-
-    var tInd = 0
-    (treez zip docTyp).foreach(_ match {
-      case (doc,typ) => {
-        doc.text.foreach(tree => {
-          val as = lines(tInd).split(",").toList
-          val ms = lines(tInd+1).split("").toList.drop(1)
-          tInd += 2
-          if(ms.length != tree.nodez.length)
-            throw new Exception()
-          if(as.length != tree.nodez.length) {
-            throw new Exception()
-          }        
-          (as zip tree.nodez).foreach(x => {
-            x._2.aspect = x._1.toInt.toChar
-          })
-          (ms zip tree.nodez).foreach(x => {
-            if(x._1 == "1") {
-              x._2.mark = true
-            } else 
-              x._2.mark = false
-          })
-          addSegmentsToMap(tree,typ)
-        })
-      }
-    })
-
-    model.resampleTSGBase()
-
-    println("and done.")
-
-  }
-
-  val typeset = (new HashSet[String]() ++ originalDox.map(_.getMeta("goldLabel"))).toList
-  val numTypes = typeset.length
+  assert(numTypes == theta.length, {throw new Exception("Type number error")})
+  theta.foreach(t => {
+    assert(t.length == numTopics, {throw new Exception("Topic number error")})
+  })
 
   /**
    *
@@ -121,76 +110,94 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
   
   def goldIndex(i : Int) = {
       val nlang = treez(i).getMeta("goldLabel")
-      val gT = typeset.indexOf(nlang)
+      val gT = typeArr.indexOf(nlang)
       if(gT == -1)
         throw new Exception
       gT
   }  
 
-  //Show some experiment sanity check info
-
-  println("Probabilistic Tree Substitution Grammar Induction System Online")
+  println("Enbuske Sampler Online")
   println()
-  println("Using these types : " + typeset.mkString(" "))
+  println("Using these types : " + typeArr.mkString(" "))
   println("   This is " + (0 /: originalDox)(_ + _.text.length) + " treez")
   println(" There are " + numTopics + " topics and " + numTypes + " types")
   println()
 
   
   /**
-   *
-  *   docTyp is an array of type indices, one for each document
-  *
-  *   topics is a 2D array of topic indices, one for each paragraph in each doc
-  *
-  *
-  */ 
-  
-  //randomly initialize topics and types
+   *   docTyp is an array of type indices, one for each document
+   */ 
   val docTyp = (treez zipWithIndex).map(x => {
     goldIndex(x._2)
   }).toArray
 
-  //println(docTyp.mkString(" "))
-
-  //randomly set the aspect (topic) for each node in the data
-  (treez zip docTyp).foreach(_ match {
-    case (doc,typ) => {
-      doc.text.foreach(s => {
-        s.nodez.foreach(n => {
-          n.aspect = rando.nextInt(numTopics).toChar            
-        })
-      })
-    }
-  })
-
   val nSyms = st.syms.size
 
-  val theta0 = 0.until(numTypes).map(x => {
-    0.until(numTopics).map(y => {
-        math.pow(10,3)
-    }).toArray
-  }).toArray
+  //WARNING MAGIC NUMBERS IN BASE CONSTRUCTOR
+  model = new TopicTypeTSG(nSyms,numTopics,numTypes,theta,new CohnBase(lowmem,nSyms,100,100),alphas,gamma,lowmem)  
 
-  model = new TopicTypeTSG(nSyms,numTopics,numTypes,theta0,new CohnBase(lowmem,nSyms,100,100),Array(100),1000,lowmem)  
-  model.resampleTSGBase()
-  //STEP 1 - insert all the information in caches
-  println("LOADING CACHES")
+  if(autoload) {
+    //STEP 1 - insert all the information in caches
+    println("LOADING CACHES")
+    
+    //randomly set the aspect (topic) for each node in the data
+    (treez zip docTyp).foreach(_ match {
+      case (doc,typ) => {
+        doc.text.foreach(s => {
+          s.nodez.foreach(n => {
+            n.aspect = rando.nextInt(numTopics).toChar            
+          })
+        })
+      }
+    })
+    
+    (0.until(treez.length) zip docTyp).foreach(_ match {
+      case (docI,typ) => {
+        treez(docI).text.foreach(tree => {
+          var overlays : Array[List[(CSegment,List[Int])]] = (for{i <- 0 until tree.nodez.length} yield {
+            model.cod.findOverlays(tree,i)
+          }).toArray
+          val iProbs = getInsideProbs(tree,typ,overlays)
+          resampleDerivation(tree,iProbs,typ)  
+          addSegmentsToMap(tree,typ)
+        })             
+      }
+    })
+    //STEP 2 - instantiate the TSG base
+    model.resampleTSGBase()
+    model.base.resampleBetas(treez)
+  }
 
-  (0.until(treez.length) zip docTyp).foreach(_ match {
-    case (docI,typ) => {
-      treez(docI).text.foreach(tree => {
-        var overlays : Array[List[(CSegment,List[Int])]] = (for{i <- 0 until tree.nodez.length} yield {
-          model.cod.findOverlays(tree,i)
-        }).toArray
-        val iProbs = getInsideProbs(tree,typ,overlays)
-        resampleDerivation(tree,iProbs,typ)  
-        addSegmentsToMap(tree,typ)
-      })             
-    }
-  })
-  //STEP 2 - instantiate the TSG base
-  model.resampleTSGBase()
+  def fileLoad(lines : Array[String]) = {
+    var tInd = 0
+    (treez zip docTyp).foreach(_ match {
+      case (doc,typ) => {
+        doc.text.foreach(tree => {
+          val as = lines(tInd).split(",").toList
+          val ms = lines(tInd+1).split("").toList.drop(1)
+          tInd += 2
+          if(ms.length != tree.nodez.length)
+            throw new Exception()
+          if(as.length != tree.nodez.length) {
+            throw new Exception()
+          }        
+          (as zip tree.nodez).foreach(x => {
+            x._2.aspect = x._1.toInt.toChar
+          })
+          (ms zip tree.nodez).foreach(x => {
+            if(x._1 == "1") {
+              x._2.mark = true
+            } else 
+              x._2.mark = false
+          })
+          addSegmentsToMap(tree,typ)
+        })
+      }
+    })
+
+    model.resampleTSGBase()
+    model.base.resampleBetas(treez)
+  }
    
   /**
    *
@@ -213,27 +220,48 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
     -1
   }
 
+  def getGrammar() : Array[(ParseTree,Double)] = {
+    val rawCounts = new HashMap[ParseTree,Int]()
+
+    model.treemap.foreach(_.foreach({
+      case (seg,(b,cs)) => {
+        rawCounts += lowmem.revert(seg) -> cs(0)
+      }
+    }))
+
+    TreeTools.cfgSet(rawCounts.iterator.map(_._1).toList).foreach(x => {
+      if(!(rawCounts contains x))
+        rawCounts += x -> 1
+    })
+
+    val norm = new HashMap[Int,Double]() 
+
+    rawCounts.foreach({
+      case (t,c) => {
+        norm(t.root.symbol) = norm.getOrElse(t.root.symbol,0.0) + c.toDouble
+      }
+    })
+
+    rawCounts.iterator.toArray.map({
+      case (t,c) => {
+        (t,c.toDouble/norm(t.root.symbol))
+      }
+    })
+  }
+
+
   def saveSampled(filE : String) = {
     
     val bw = new BufferedWriter(new FileWriter(new File(filE)))
     
-    bw.write(nSyms.toString + "\n")
-    bw.write(model.numTopics.toString + "\n")
-    bw.write(model.tsgAlpha.mkString("\n") + "\n")
     bw.write(model.tsgGamma.toString + "\n")
-
-    bw.write(docTyp.mkString(",") + "\n")
-
-    bw.write(model.numTypes + "\n")
-    typeset.foreach(x => {
-      bw.write(x + "\n")
-    })
+    bw.write(model.numTopics.toString + "\n")
+    bw.write(model.numTypes.toString + "\n")
+    
+    bw.write(model.tsgAlpha.mkString("\n") + "\n")
+    bw.write(typeArr.mkString("\n") + "\n")
 
     model.theta0.foreach(_.foreach(x => bw.write(x + "\n")))
-
-    for(i <- 0 until nSyms) {
-      bw.write(model.base.betas(i).toString + "\n")
-    }
 
     println("writing " + treez.flatMap(_.text).length + " treez")
     treez.flatMap(_.text).map(tree => {
@@ -361,7 +389,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
       }
 
       var lind = 0
-      (typeset zipWithIndex).foreach(l => {
+      (typeArr zipWithIndex).foreach(l => {
         val topics = model.topicCount.map(_(l._2))
         println(l._1 + " -   " + topics.mkString("\t"))
       })

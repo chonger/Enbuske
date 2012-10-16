@@ -6,17 +6,36 @@ object SampleTreebank {
 
  def main(args : Array[String]) = {
 
+   val singleT = Array(Array(100.0)) //the value doesnt matter
+   val singleA = Array(100000000.0)
+   val singleG = 100.0
+   val typeA = Array("pennTB")
+
    val filE = "/home/chonger/data/PTB/train.txt.unk"
 
    val st = new CFGSymbolTable()
    val treez = st.read(filE)
    val pcfg = new PCFG(st,treez)
-   val esampler = new ESampler(Array(new XMLDoc(treez,Array(("goldLabel","pennTB")))),st,pcfg,1)
+   val esampler = new ESampler(Array(new XMLDoc(treez,Array(("goldLabel","pennTB")))),st,pcfg,typeA,singleA,singleG,singleT)
    
    esampler.doSampling(1000,"/home/chonger/data/PTB/train-pp.txt")
 
-   esampler.saveSampled("/home/chonger/data/PTB/train-sampled-1000.txt")
+   esampler.saveSampled("/home/chonger/data/PTB/train-sampled.txt")
 
+   val grammar = esampler.getGrammar()
+
+   import java.io._
+
+   val bw = new BufferedWriter(new FileWriter("/home/chonger/data/PTB/train-grammar.txt"))
+   
+   grammar.foreach({
+     case (t,v) => {
+       bw.write(t.fString(st) + "\n")
+       bw.write(v + "\n")
+     }
+   })
+
+   bw.close()
  }
 
 }
@@ -24,7 +43,7 @@ object SampleTreebank {
 object Sample {
 
   def main(args : Array[String]) : Unit = {
-
+/**
     val toSample = args(0)
     val nIter = args(1).toInt
     val ppFile = args(2)
@@ -33,7 +52,7 @@ object Sample {
     val sampler = ESampler.create(toSample)
     sampler.doSampling(nIter,ppFile)
     sampler.saveSampled(outFile)
-
+*/
   }
 
 }
