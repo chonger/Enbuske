@@ -6,7 +6,7 @@ object SampleTreebank {
 
  def main(args : Array[String]) = {
 
-   val filE = "/home/chonger/data/PTB/train.debug.txt"
+   val filE = "/home/chonger/data/PTB/train.txt.unk"
 
    val st = new CFGSymbolTable()
    val treez = st.read(filE)
@@ -15,7 +15,7 @@ object SampleTreebank {
    
    esampler.doSampling(1000,"/home/chonger/data/PTB/train-pp.txt")
 
-   esampler.saveSampled("/home/chonger/data/PTB/train-sampled.txt")
+   esampler.saveSampled("/home/chonger/data/PTB/train-sampled-1000.txt")
 
  }
 
