@@ -1,0 +1,572 @@
+setting 'ivy.default.settings.dir' to 'jar:file:/home/chonger/sbtproj/sbt-launch-0.7.7.jar!/org/apache/ivy/core/settings'
+setting 'ivy.basedir' to '/home/chonger/neuenbuske/.'
+setting 'ivy.default.conf.dir' to 'jar:file:/home/chonger/sbtproj/sbt-launch-0.7.7.jar!/org/apache/ivy/core/settings'
+impossible to define new type: class not found: org.apache.ivy.plugins.version.PatternVersionMatcher in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.trigger.LogTrigger in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.resolver.VsftpResolver in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.conflict.RegexpConflictManager in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.resolver.SshResolver in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.resolver.VfsResolver in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.signer.bouncycastle.OpenPGPSignatureGenerator in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.resolver.SFTPResolver in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.resolver.packager.PackagerResolver in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.ant.AntCallTrigger in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.plugins.resolver.IvyRepResolver in [] nor Ivy classloader
+impossible to define new type: class not found: org.apache.ivy.ant.AntBuildTrigger in [] nor Ivy classloader
+impossible to define glob matcher: org.apache.ivy.plugins.matcher.GlobPatternMatcher was not found.
+setting 'java.runtime.name' to 'OpenJDK Runtime Environment'
+setting 'sun.boot.library.path' to '/usr/lib/jvm/java-6-openjdk/jre/lib/amd64'
+setting 'java.vm.version' to '19.0-b09'
+setting 'java.vm.vendor' to 'Sun Microsystems Inc.'
+setting 'java.vendor.url' to 'http://java.sun.com/'
+setting 'path.separator' to ':'
+setting 'java.vm.name' to 'OpenJDK 64-Bit Server VM'
+setting 'file.encoding.pkg' to 'sun.io'
+setting 'sun.java.launcher' to 'SUN_STANDARD'
+setting 'user.country' to 'US'
+setting 'sun.os.patch.level' to 'unknown'
+setting 'java.vm.specification.name' to 'Java Virtual Machine Specification'
+setting 'user.dir' to '/home/chonger/neuenbuske'
+setting 'java.runtime.version' to '1.6.0_20-b20'
+setting 'java.awt.graphicsenv' to 'sun.awt.X11GraphicsEnvironment'
+setting 'java.endorsed.dirs' to '/usr/lib/jvm/java-6-openjdk/jre/lib/endorsed'
+setting 'os.arch' to 'amd64'
+setting 'java.io.tmpdir' to '/tmp'
+setting 'line.separator' to '
+'
+setting 'java.vm.specification.vendor' to 'Sun Microsystems Inc.'
+setting 'os.name' to 'Linux'
+setting 'sun.jnu.encoding' to 'UTF-8'
+setting 'java.library.path' to '/usr/lib/jvm/java-6-openjdk/jre/lib/amd64/server:/usr/lib/jvm/java-6-openjdk/jre/lib/amd64:/usr/lib/jvm/java-6-openjdk/jre/../lib/amd64:/usr/java/packages/lib/amd64:/usr/lib/jni:/lib:/usr/lib'
+setting 'java.specification.name' to 'Java Platform API Specification'
+setting 'java.class.version' to '50.0'
+setting 'sun.management.compiler' to 'HotSpot 64-Bit Server Compiler'
+setting 'os.version' to '2.6.32-31-generic'
+setting 'user.home' to '/home/chonger'
+setting 'user.timezone' to 'America/New_York'
+setting 'java.awt.printerjob' to 'sun.print.PSPrinterJob'
+setting 'file.encoding' to 'UTF-8'
+setting 'java.specification.version' to '1.6'
+setting 'java.class.path' to '/home/chonger/sbtproj/sbt-launch-0.7.7.jar'
+setting 'user.name' to 'chonger'
+setting 'java.vm.specification.version' to '1.0'
+setting 'java.home' to '/usr/lib/jvm/java-6-openjdk/jre'
+setting 'sun.arch.data.model' to '64'
+setting 'user.language' to 'en'
+setting 'java.specification.vendor' to 'Sun Microsystems Inc.'
+setting 'java.vm.info' to 'mixed mode'
+setting 'java.version' to '1.6.0_20'
+setting 'java.ext.dirs' to '/usr/lib/jvm/java-6-openjdk/jre/lib/ext:/usr/java/packages/lib/ext'
+setting 'sun.boot.class.path' to '/usr/lib/jvm/java-6-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/netx.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/plugin.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/rhino.jar:/usr/lib/jvm/java-6-openjdk/jre/lib/modules/jdk.boot.jar:/usr/lib/jvm/java-6-openjdk/jre/classes'
+setting 'java.vendor' to 'Sun Microsystems Inc.'
+setting 'file.separator' to '/'
+setting 'java.vendor.url.bug' to 'http://java.sun.com/cgi-bin/bugreport.cgi'
+setting 'sun.io.unicode.encoding' to 'UnicodeLittle'
+setting 'sun.cpu.endian' to 'little'
+setting 'sun.desktop' to 'gnome'
+setting 'sun.cpu.isalist' to ''
+setting 'ivy.default.ivy.user.dir' to '/home/chonger/.ivy2'
+setting 'ivy.home' to '/home/chonger/.ivy2'
+no default ivy user dir defined: set to /home/chonger/.ivy2
+setting 'ivy.cache.dir' to '/home/chonger/.ivy2/cache'
+no default cache defined: set to /home/chonger/.ivy2/cache
+setting 'ivy.basedir' to '/home/chonger/neuenbuske/project/boot'
+setting 'basedir' to '/home/chonger/neuenbuske/project/boot'
+setting 'scala' to '2.9.0'
+:: resolving dependencies :: org.scala-tools.sbt#boot-scala;1.0
+	confs: [default]
+	validate = true
+	refresh = false
+resolving dependencies for configuration 'default'
+== resolving dependencies for org.scala-tools.sbt#boot-scala;1.0 [default]
+loadData of org.scala-tools.sbt#boot-scala;1.0 of rootConf=default
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-compiler;2.9.0 [default->default]
+loadData of org.scala-lang#scala-compiler;2.9.0 of rootConf=default
+	using redefined-public to resolve org.scala-lang#scala-compiler;2.9.0
+redefined-public: Checking cache for: dependency: org.scala-lang#scala-compiler;2.9.0 {default=[default, optional(default)]}
+redefined-public: no namespace defined: using system
+	no ivy file in cache for org.scala-lang#scala-compiler;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml
+redefined-public: no latest strategy defined: using default
+local: no namespace defined: using system
+	no ivy file in cache for org.scala-lang#scala-compiler;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+	local: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	local: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	local: no ivy file nor artifact found for org.scala-lang#scala-compiler;2.9.0
+Maven2 Local: no namespace defined: using system
+	no ivy file in cache for org.scala-lang#scala-compiler;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom
+	Maven2 Local: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+	Maven2 Local: no ivy file nor artifact found for org.scala-lang#scala-compiler;2.9.0
+sbt-db: no namespace defined: using system
+	no ivy file in cache for org.scala-lang#scala-compiler;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml
+	 trying http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+		tried http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+	sbt-db: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/ivys/ivy.xml
+	 trying http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	sbt-db: no ivy file nor artifact found for org.scala-lang#scala-compiler;2.9.0
+Maven Central: no namespace defined: using system
+	no ivy file in cache for org.scala-lang#scala-compiler;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom
+	Maven Central: found md file for org.scala-lang#scala-compiler;2.9.0
+		=> http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom (2.9.0)
+	parser = pom parser
+	no ivy file in cache for org.scala-lang#scala-compiler;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml
+downloading http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.pom
+		to /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/ivy-2.9.0.xml.original.part
+	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.9.0!scala-compiler.pom(pom.original) (254ms)
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	local: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+	 trying http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/jars/scala-compiler.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+	local: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-sources.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-sources.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-sources.jar
+	 trying http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/sources/scala-compiler-sources.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-sources.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-sources.jar
+source artifact found for org.scala-lang#scala-compiler;2.9.0
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+	local: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+	 trying http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-compiler;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-compiler/2.9.0/javadocs/scala-compiler-javadoc.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+HTTP response status: 404 url=http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+CLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+	Maven Central: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+Scala-Tools Maven2 Repository: no namespace defined: using system
+	 trying http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+		tried http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+HTTP response status: 404 url=http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+CLIENT ERROR: Not Found url=http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+	Scala-Tools Maven2 Repository: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=http://scala-tools.org/repo-releases/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+Scala-Tools Maven2 Snapshots Repository: no namespace defined: using system
+	 trying http://scala-tools.org/repo-snapshots/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+		tried http://scala-tools.org/repo-snapshots/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+HTTP response status: 404 url=http://scala-tools.org/repo-snapshots/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+CLIENT ERROR: Not Found url=http://scala-tools.org/repo-snapshots/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+	Scala-Tools Maven2 Snapshots Repository: resource not reachable for org/scala-lang#scala-compiler;2.9.0: res=http://scala-tools.org/repo-snapshots/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0-javadoc.jar
+no javadoc artifact found for org.scala-lang#scala-compiler;2.9.0
+	default-cache: parsed downloaded md file for org.scala-lang#scala-compiler;2.9.0; parsed=org.scala-lang#scala-compiler;2.9.0
+	checking org.scala-lang#scala-compiler;2.9.0 from Maven Central against [none]
+	module revision kept as first found: org.scala-lang#scala-compiler;2.9.0 from Maven Central
+	found org.scala-lang#scala-compiler;2.9.0 in Maven Central
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-compiler;2.9.0 [default->runtime]
+loadData of org.scala-lang#scala-compiler;2.9.0 of rootConf=default
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-compiler;2.9.0 [default->compile]
+loadData of org.scala-lang#scala-compiler;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [compile->master(*)]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+	using redefined-public to resolve org.scala-lang#scala-library;2.9.0
+redefined-public: Checking cache for: dependency: org.scala-lang#scala-library;2.9.0 {compile=[compile(*), master(*)], runtime=[runtime(*)]}
+	no ivy file in cache for org.scala-lang#scala-library;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml
+	no ivy file in cache for org.scala-lang#scala-library;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+	local: resource not reachable for org.scala-lang#scala-library;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	local: resource not reachable for org.scala-lang#scala-library;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	local: no ivy file nor artifact found for org.scala-lang#scala-library;2.9.0
+	no ivy file in cache for org.scala-lang#scala-library;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom
+	Maven2 Local: resource not reachable for org/scala-lang#scala-library;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-library;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+	Maven2 Local: no ivy file nor artifact found for org.scala-lang#scala-library;2.9.0
+	no ivy file in cache for org.scala-lang#scala-library;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml
+	 trying http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+		tried http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+	sbt-db: resource not reachable for org.scala-lang#scala-library;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/ivys/ivy.xml
+	 trying http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-library;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	sbt-db: no ivy file nor artifact found for org.scala-lang#scala-library;2.9.0
+	no ivy file in cache for org.scala-lang#scala-library;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom
+	Maven Central: found md file for org.scala-lang#scala-library;2.9.0
+		=> http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom (2.9.0)
+	parser = pom parser
+	no ivy file in cache for org.scala-lang#scala-library;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml
+downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.pom
+		to /home/chonger/.ivy2/cache/org.scala-lang/scala-library/ivy-2.9.0.xml.original.part
+	[SUCCESSFUL ] org.scala-lang#scala-library;2.9.0!scala-library.pom(pom.original) (251ms)
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	local: resource not reachable for org.scala-lang#scala-library;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-library;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+	 trying http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-library;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/jars/scala-library.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+	local: resource not reachable for org.scala-lang#scala-library;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-sources.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-sources.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-library;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-sources.jar
+	 trying http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-library;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/sources/scala-library-sources.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-sources.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-sources.jar
+source artifact found for org.scala-lang#scala-library;2.9.0
+	 trying /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+	local: resource not reachable for org.scala-lang#scala-library;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-javadoc.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-javadoc.jar
+	Maven2 Local: resource not reachable for org/scala-lang#scala-library;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-javadoc.jar
+	 trying http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+		tried http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+	sbt-db: resource not reachable for org.scala-lang#scala-library;2.9.0: res=http://databinder.net/repo/org.scala-lang/scala-library/2.9.0/javadocs/scala-library-javadoc.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-javadoc.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0-javadoc.jar
+javadoc artifact found for org.scala-lang#scala-library;2.9.0
+	default-cache: parsed downloaded md file for org.scala-lang#scala-library;2.9.0; parsed=org.scala-lang#scala-library;2.9.0
+	checking org.scala-lang#scala-library;2.9.0 from Maven Central against [none]
+	module revision kept as first found: org.scala-lang#scala-library;2.9.0 from Maven Central
+	found org.scala-lang#scala-library;2.9.0 in Maven Central
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [compile->compile(*)]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [compile->default]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [compile->runtime]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [compile->compile]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [compile->master]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [runtime->runtime(*)]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#scala-library;2.9.0 [runtime->compile]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+default is loaded and no conf to load.  Skip loading
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-compiler;2.9.0 [default->master]
+loadData of org.scala-lang#scala-compiler;2.9.0 of rootConf=default
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-compiler;2.9.0 [default->optional(default)]
+loadData of org.scala-lang#scala-compiler;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#jline;2.9.0 [optional->master(*)]
+loadData of org.scala-lang#jline;2.9.0 of rootConf=default
+	using redefined-public to resolve org.scala-lang#jline;2.9.0
+redefined-public: Checking cache for: dependency: org.scala-lang#jline;2.9.0 {optional=[compile(*), master(*)]}
+	no ivy file in cache for org.scala-lang#jline;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml
+	no ivy file in cache for org.scala-lang#jline;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml
+	 trying /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+		tried /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+	local: resource not reachable for org.scala-lang#jline;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+	 trying /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/jars/jline.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/jars/jline.jar
+	local: resource not reachable for org.scala-lang#jline;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/jars/jline.jar
+	local: no ivy file nor artifact found for org.scala-lang#jline;2.9.0
+	no ivy file in cache for org.scala-lang#jline;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.pom
+		tried file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.pom
+	Maven2 Local: resource not reachable for org/scala-lang#jline;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.pom
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+	Maven2 Local: resource not reachable for org/scala-lang#jline;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+	Maven2 Local: no ivy file nor artifact found for org.scala-lang#jline;2.9.0
+	no ivy file in cache for org.scala-lang#jline;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml
+	 trying http://databinder.net/repo/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+		tried http://databinder.net/repo/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+	sbt-db: resource not reachable for org.scala-lang#jline;2.9.0: res=http://databinder.net/repo/org.scala-lang/jline/2.9.0/ivys/ivy.xml
+	 trying http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+		tried http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+	sbt-db: resource not reachable for org.scala-lang#jline;2.9.0: res=http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+	sbt-db: no ivy file nor artifact found for org.scala-lang#jline;2.9.0
+	no ivy file in cache for org.scala-lang#jline;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml
+	 trying http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.pom
+		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.pom
+	Maven Central: found md file for org.scala-lang#jline;2.9.0
+		=> http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.pom (2.9.0)
+	parser = pom parser
+	no ivy file in cache for org.scala-lang#jline;2.9.0: tried /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml
+downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.pom ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.pom
+		to /home/chonger/.ivy2/cache/org.scala-lang/jline/ivy-2.9.0.xml.original.part
+	[SUCCESSFUL ] org.scala-lang#jline;2.9.0!jline.pom(pom.original) (246ms)
+	 trying /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/jars/jline.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/jars/jline.jar
+	local: resource not reachable for org.scala-lang#jline;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/jars/jline.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+	Maven2 Local: resource not reachable for org/scala-lang#jline;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+	 trying http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+		tried http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+	sbt-db: resource not reachable for org.scala-lang#jline;2.9.0: res=http://databinder.net/repo/org.scala-lang/jline/2.9.0/jars/jline.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+	 trying /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+	local: resource not reachable for org.scala-lang#jline;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0-sources.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0-sources.jar
+	Maven2 Local: resource not reachable for org/scala-lang#jline;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0-sources.jar
+	 trying http://databinder.net/repo/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+		tried http://databinder.net/repo/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+	sbt-db: resource not reachable for org.scala-lang#jline;2.9.0: res=http://databinder.net/repo/org.scala-lang/jline/2.9.0/sources/jline-sources.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-sources.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-sources.jar
+source artifact found for org.scala-lang#jline;2.9.0
+	 trying /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+		tried /home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+	local: resource not reachable for org.scala-lang#jline;2.9.0: res=/home/chonger/.ivy2/local/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+	 trying file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+		tried file:///home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	Maven2 Local: resource not reachable for org/scala-lang#jline;2.9.0: res=file:/home/chonger/.m2/repository/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	 trying http://databinder.net/repo/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+		tried http://databinder.net/repo/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+	sbt-db: resource not reachable for org.scala-lang#jline;2.9.0: res=http://databinder.net/repo/org.scala-lang/jline/2.9.0/javadocs/jline-javadoc.jar
+	 trying http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+HTTP response status: 404 url=http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+CLIENT ERROR: Not Found url=http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	Maven Central: resource not reachable for org/scala-lang#jline;2.9.0: res=http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	 trying http://scala-tools.org/repo-releases/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+		tried http://scala-tools.org/repo-releases/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+HTTP response status: 404 url=http://scala-tools.org/repo-releases/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+CLIENT ERROR: Not Found url=http://scala-tools.org/repo-releases/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	Scala-Tools Maven2 Repository: resource not reachable for org/scala-lang#jline;2.9.0: res=http://scala-tools.org/repo-releases/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	 trying http://scala-tools.org/repo-snapshots/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+		tried http://scala-tools.org/repo-snapshots/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+HTTP response status: 404 url=http://scala-tools.org/repo-snapshots/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+CLIENT ERROR: Not Found url=http://scala-tools.org/repo-snapshots/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+	Scala-Tools Maven2 Snapshots Repository: resource not reachable for org/scala-lang#jline;2.9.0: res=http://scala-tools.org/repo-snapshots/org/scala-lang/jline/2.9.0/jline-2.9.0-javadoc.jar
+no javadoc artifact found for org.scala-lang#jline;2.9.0
+	default-cache: parsed downloaded md file for org.scala-lang#jline;2.9.0; parsed=org.scala-lang#jline;2.9.0
+	checking org.scala-lang#jline;2.9.0 from Maven Central against [none]
+	module revision kept as first found: org.scala-lang#jline;2.9.0 from Maven Central
+	found org.scala-lang#jline;2.9.0 in Maven Central
+== resolving dependencies org.scala-lang#scala-compiler;2.9.0->org.scala-lang#jline;2.9.0 [optional->compile(*)]
+loadData of org.scala-lang#jline;2.9.0 of rootConf=default
+== resolving dependencies org.scala-lang#jline;2.9.0->org.fusesource.jansi#jansi;1.4 [compile->master(*)]
+loadData of org.fusesource.jansi#jansi;1.4 of rootConf=default
+	using redefined-public to resolve org.fusesource.jansi#jansi;1.4
+redefined-public: Checking cache for: dependency: org.fusesource.jansi#jansi;1.4 {compile=[compile(*), master(*)], runtime=[runtime(*)]}
+	no ivy file in cache for org.fusesource.jansi#jansi;1.4: tried /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml
+	no ivy file in cache for org.fusesource.jansi#jansi;1.4: tried /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml
+	 trying /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+		tried /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+	local: resource not reachable for org.fusesource.jansi#jansi;1.4: res=/home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+	 trying /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+		tried /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	local: resource not reachable for org.fusesource.jansi#jansi;1.4: res=/home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	local: no ivy file nor artifact found for org.fusesource.jansi#jansi;1.4
+	no ivy file in cache for org.fusesource.jansi#jansi;1.4: tried /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml
+	 trying file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom
+		tried file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom
+	Maven2 Local: resource not reachable for org/fusesource/jansi#jansi;1.4: res=file:/home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom
+	 trying file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+		tried file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+	Maven2 Local: resource not reachable for org/fusesource/jansi#jansi;1.4: res=file:/home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+	Maven2 Local: no ivy file nor artifact found for org.fusesource.jansi#jansi;1.4
+	no ivy file in cache for org.fusesource.jansi#jansi;1.4: tried /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml
+	 trying http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+		tried http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+HTTP response status: 404 url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+	sbt-db: resource not reachable for org.fusesource.jansi#jansi;1.4: res=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/ivys/ivy.xml
+	 trying http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+		tried http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	sbt-db: resource not reachable for org.fusesource.jansi#jansi;1.4: res=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	sbt-db: no ivy file nor artifact found for org.fusesource.jansi#jansi;1.4
+	no ivy file in cache for org.fusesource.jansi#jansi;1.4: tried /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml
+	 trying http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom
+		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom
+	Maven Central: found md file for org.fusesource.jansi#jansi;1.4
+		=> http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom (1.4)
+	parser = pom parser
+	no ivy file in cache for org.fusesource.jansi#jansi;1.4: tried /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml
+downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.pom
+		to /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/ivy-1.4.xml.original.part
+	[SUCCESSFUL ] org.fusesource.jansi#jansi;1.4!jansi.pom(pom.original) (258ms)
+	 trying /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+		tried /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	local: resource not reachable for org.fusesource.jansi#jansi;1.4: res=/home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	 trying file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+		tried file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+	Maven2 Local: resource not reachable for org/fusesource/jansi#jansi;1.4: res=file:/home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+	 trying http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+		tried http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	sbt-db: resource not reachable for org.fusesource.jansi#jansi;1.4: res=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/jars/jansi.jar
+	 trying http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+	 trying /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+		tried /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+	local: resource not reachable for org.fusesource.jansi#jansi;1.4: res=/home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+	 trying file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar
+		tried file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar
+	Maven2 Local: resource not reachable for org/fusesource/jansi#jansi;1.4: res=file:/home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar
+	 trying http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+		tried http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+	sbt-db: resource not reachable for org.fusesource.jansi#jansi;1.4: res=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/sources/jansi-sources.jar
+	 trying http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar
+		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-sources.jar
+source artifact found for org.fusesource.jansi#jansi;1.4
+	 trying /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+		tried /home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+	local: resource not reachable for org.fusesource.jansi#jansi;1.4: res=/home/chonger/.ivy2/local/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+	 trying file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar
+		tried file:///home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar
+	Maven2 Local: resource not reachable for org/fusesource/jansi#jansi;1.4: res=file:/home/chonger/.m2/repository/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar
+	 trying http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+		tried http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+HTTP response status: 404 url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+CLIENT ERROR: Not Found url=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+	sbt-db: resource not reachable for org.fusesource.jansi#jansi;1.4: res=http://databinder.net/repo/org.fusesource.jansi/jansi/1.4/javadocs/jansi-javadoc.jar
+	 trying http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar
+		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4-javadoc.jar
+javadoc artifact found for org.fusesource.jansi#jansi;1.4
+	default-cache: parsed downloaded md file for org.fusesource.jansi#jansi;1.4; parsed=org.fusesource.jansi#jansi;1.4
+	checking org.fusesource.jansi#jansi;1.4 from Maven Central against [none]
+	module revision kept as first found: org.fusesource.jansi#jansi;1.4 from Maven Central
+	found org.fusesource.jansi#jansi;1.4 in Maven Central
+== resolving dependencies org.scala-lang#jline;2.9.0->org.fusesource.jansi#jansi;1.4 [compile->compile(*)]
+loadData of org.fusesource.jansi#jansi;1.4 of rootConf=default
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-library;2.9.0 [default->default]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+default is loaded and no conf to load.  Skip loading
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-library;2.9.0 [default->runtime]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+default is loaded and no conf to load.  Skip loading
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-library;2.9.0 [default->compile]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+default is loaded and no conf to load.  Skip loading
+== resolving dependencies org.scala-tools.sbt#boot-scala;1.0->org.scala-lang#scala-library;2.9.0 [default->master]
+loadData of org.scala-lang#scala-library;2.9.0 of rootConf=default
+default is loaded and no conf to load.  Skip loading
+Nbr of module to sort : 4
+Sort dependencies of : org.scala-lang#scala-compiler;2.9.0 / Number of dependencies = 2
+Sort dependencies of : org.scala-lang#scala-library;2.9.0 / Number of dependencies = 0
+Sort done for : org.scala-lang#scala-library;2.9.0
+Sort dependencies of : org.scala-lang#jline;2.9.0 / Number of dependencies = 1
+Sort dependencies of : org.fusesource.jansi#jansi;1.4 / Number of dependencies = 1
+Sort done for : org.fusesource.jansi#jansi;1.4
+Sort done for : org.scala-lang#jline;2.9.0
+Sort done for : org.scala-lang#scala-compiler;2.9.0
+Module descriptor is processed : org.scala-lang#scala-library;2.9.0
+Module descriptor is processed : org.scala-lang#jline;2.9.0
+Module descriptor is processed : org.fusesource.jansi#jansi;1.4
+	resolved ivy file produced in /home/chonger/.ivy2/cache/resolved-org.scala-tools.sbt-boot-scala-1.0.xml
+:: downloading artifacts ::
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+downloading http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-compiler/2.9.0/scala-compiler-2.9.0.jar
+		to /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.9.0.jar.part
+	[SUCCESSFUL ] org.scala-lang#scala-compiler;2.9.0!scala-compiler.jar (6510ms)
+	 trying http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/scala-lang/scala-library/2.9.0/scala-library-2.9.0.jar
+		to /home/chonger/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.9.0.jar.part
+	[SUCCESSFUL ] org.scala-lang#scala-library;2.9.0!scala-library.jar (3875ms)
+	 trying http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+		tried http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.jar ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/scala-lang/jline/2.9.0/jline-2.9.0.jar
+		to /home/chonger/.ivy2/cache/org.scala-lang/jline/jars/jline-2.9.0.jar.part
+	[SUCCESSFUL ] org.scala-lang#jline;2.9.0!jline.jar (380ms)
+	 trying http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+		tried http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar ...
+	Maven Central: downloading http://repo1.maven.org/maven2/org/fusesource/jansi/jansi/1.4/jansi-1.4.jar
+		to /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/jars/jansi-1.4.jar.part
+	[SUCCESSFUL ] org.fusesource.jansi#jansi;1.4!jansi.jar (216ms)
+:: resolution report :: resolve 7421ms :: artifacts dl 10985ms
+Nbr of module to sort : 4
+Sort dependencies of : org.scala-lang#scala-compiler;2.9.0 / Number of dependencies = 2
+Sort dependencies of : org.scala-lang#scala-library;2.9.0 / Number of dependencies = 0
+Sort done for : org.scala-lang#scala-library;2.9.0
+Sort dependencies of : org.scala-lang#jline;2.9.0 / Number of dependencies = 1
+Sort dependencies of : org.fusesource.jansi#jansi;1.4 / Number of dependencies = 1
+Sort done for : org.fusesource.jansi#jansi;1.4
+Sort done for : org.scala-lang#jline;2.9.0
+Sort done for : org.scala-lang#scala-compiler;2.9.0
+Module descriptor is processed : org.scala-lang#scala-library;2.9.0
+Module descriptor is processed : org.scala-lang#jline;2.9.0
+Module descriptor is processed : org.fusesource.jansi#jansi;1.4
+	report for org.scala-tools.sbt#boot-scala;1.0 default produced in /home/chonger/.ivy2/cache/org.scala-tools.sbt-boot-scala-default.xml
+	resolve done (7421ms resolve - 10985ms download)
+:: retrieving :: org.scala-tools.sbt#boot-scala
+	checkUpToDate=true
+no explicit confs given for retrieve, using ivy file: /home/chonger/.ivy2/cache/resolved-org.scala-tools.sbt-boot-scala-1.0.xml
+using ivy parser to parse /home/chonger/.ivy2/cache/resolved-org.scala-tools.sbt-boot-scala-1.0.xml
+post 1.3 ivy file: using exact as default matcher
+	confs: [default]
+	retrieving /home/chonger/.ivy2/cache/org.scala-lang/jline/jars/jline-2.9.0.jar
+		to /home/chonger/neuenbuske/project/boot/scala-2.9.0/lib/jline.jar
+	retrieving /home/chonger/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.9.0.jar
+		to /home/chonger/neuenbuske/project/boot/scala-2.9.0/lib/scala-library.jar
+	retrieving /home/chonger/.ivy2/cache/org.fusesource.jansi/jansi/jars/jansi-1.4.jar
+		to /home/chonger/neuenbuske/project/boot/scala-2.9.0/lib/jansi.jar
+	retrieving /home/chonger/.ivy2/cache/org.scala-lang/scala-compiler/jars/scala-compiler-2.9.0.jar
+		to /home/chonger/neuenbuske/project/boot/scala-2.9.0/lib/scala-compiler.jar
+	4 artifacts copied, 0 already retrieved (20442kB/43ms)
+	retrieve done (43ms)
