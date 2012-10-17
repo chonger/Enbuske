@@ -7,11 +7,12 @@ object SampleTreebank {
  def main(args : Array[String]) = {
 
    val singleT = Array(Array(100.0)) //the value doesnt matter
-   val singleA = Array(100000000.0)
-   val singleG = 100.0
+   val singleA = Array(100.0)
+   val singleG = 1000000.0
    val typeA = Array("pennTB")
 
    val filE = "/home/chonger/data/PTB/train.txt.unk"
+   //val filE = "/home/chonger/data/PTB/train.debug.txt"
 
    val st = new CFGSymbolTable()
    val treez = st.read(filE)
@@ -40,9 +41,42 @@ object SampleTreebank {
 
 }
 
-object Sample {
+object SampleICLE {
 
   def main(args : Array[String]) : Unit = {
+
+   val singleT = Array(Array(100.0)) //the value doesnt matter
+   val singleA = Array(100000000.0)
+   val singleG = 100.0
+   val typeA = Array("pennTB")
+
+    val unk_bnp = "/home/chonger/data/ICLE/icle_bnp_unk.xml" //unked with collapsed bnps
+    val unk_normal = "/home/chonger/data/ICLE/icle_unk.xml" //unked
+
+   val st = new CFGSymbolTable()
+   val dox = XMLDoc.read(unk_bnp,st)
+   val pcfg = new PCFG(st,dox)
+   val esampler = new ESampler(dox,st,pcfg,typeA,singleA,singleG,singleT)
+   
+   esampler.doSampling(1000,"/home/chonger/data/PTB/train-pp.txt")
+
+   esampler.saveSampled("/home/chonger/data/PTB/train-sampled.txt")
+
+   val grammar = esampler.getGrammar()
+
+   import java.io._
+
+   val bw = new BufferedWriter(new FileWriter("/home/chonger/data/PTB/train-grammar.txt"))
+   
+   grammar.foreach({
+     case (t,v) => {
+       bw.write(t.fString(st) + "\n")
+       bw.write(v + "\n")
+     }
+   })
+
+   bw.close()
+
 /**
     val toSample = args(0)
     val nIter = args(1).toInt

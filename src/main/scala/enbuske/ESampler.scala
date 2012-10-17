@@ -210,10 +210,10 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
     val sum = (0.0 /: a)(_ + _)
     if(sum == 0)
       return -1
-    val r = rando.nextDouble()
+    val r = rando.nextDouble() * sum
     var acc = 0.0
     0.until(a.length).foreach(aI => {
-      acc += a(aI) / sum
+      acc += a(aI)
       if(acc > r)
         return aI
     })
@@ -427,7 +427,6 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
       var classTot = Array.tabulate(model.numTypes)(x => 0)
       var semiTot = Array.tabulate(model.numTypes)(x => 0)
         
-      println("Total documents for each type - " + (classTot zip semiTot).mkString(" "))
       println("I-(" + dispString + ")\tT>{" + timeString + "}\tL_[" + llString + "]\tZ<" + sizeStr + 
               ">\tC!" + chgStr + "\tFAIL=" + fails)
   
