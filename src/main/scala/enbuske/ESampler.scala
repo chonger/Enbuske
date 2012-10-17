@@ -138,7 +138,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
 
   if(autoload) {
     //STEP 1 - insert all the information in caches
-    println("LOADING CACHES")
+    println("Autoloading caches")
     
     //randomly set the aspect (topic) for each node in the data
     (treez zip docTyp).foreach(_ match {
