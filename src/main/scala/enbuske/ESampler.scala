@@ -112,7 +112,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
       val nlang = treez(i).getMeta("goldLabel")
       val gT = typeArr.indexOf(nlang)
       if(gT == -1)
-        throw new Exception
+        throw new Exception("No type " + nlang + " in - " + typeArr.mkString(" "))
       gT
   }  
 
@@ -220,12 +220,29 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
     -1
   }
 
-  def getGrammar() : Array[(ParseTree,Double)] = {
-    val rawCounts = new HashMap[ParseTree,Int]()
+  def getPTSGs() : Array[PTSG] = {
+    0.until(numTypes).map(i => {
+      val rM = getGrammar(i).groupBy(_._1.root.symbol)
+      val rules : Array[HashMap[ParseTree,Double]] = Array.tabulate(st.syms.size)(x => {
+        new HashMap[ParseTree,Double]() ++ rM(x)
+      })
+      new PTSG(st,rules)
+    }).toArray
+  }
+
+  def getGrammar(typeInd : Int) : Array[(ParseTree,Double)] = {
+    val rawCounts = new HashMap[ParseTree,Double]()
 
     model.treemap.foreach(_.foreach({
       case (seg,(b,cs)) => {
-        rawCounts += lowmem.revert(seg) -> cs(0)
+
+        val scores = model.scoreET(seg)
+
+        val p = (0.0 /: 0.until(numTopics))((a,i) => {
+          model.topicProb(i,typeInd) * scores(i)
+        })
+
+        rawCounts += lowmem.revert(seg) -> p
       }
     }))
 

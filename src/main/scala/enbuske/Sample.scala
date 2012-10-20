@@ -2,99 +2,73 @@ package enbuske
 
 import multitool._
 
-object SampleTreebank {
+abstract class SampleProg {
 
- def main(args : Array[String]) = {
+  def init(typeA : Array[String]) : (Array[Array[Double]],Array[Double],Double) 
 
-   val singleT = Array(Array(100.0)) //the value doesnt matter
-   val singleA = Array(100.0)
-   val singleG = 1000000.0
-   val typeA = Array("pennTB")
+  def apply(fBase : String,inF : String,nIters : Int,ppF : String,sF : String) : Unit = {
 
-   val filE = "/home/chonger/data/PTB/train.txt.unk"
-   //val filE = "/home/chonger/data/PTB/train.debug.txt"
-
-   val st = new CFGSymbolTable()
-   val treez = st.read(filE)
-   val pcfg = new PCFG(st,treez)
-   val esampler = new ESampler(Array(new XMLDoc(treez,Array(("goldLabel","pennTB")))),st,pcfg,typeA,singleA,singleG,singleT)
-   
-   esampler.doSampling(1000,"/home/chonger/data/PTB/train-pp.txt")
-
-   esampler.saveSampled("/home/chonger/data/PTB/train-sampled.txt")
-
-   val grammar = esampler.getGrammar()
-
-   import java.io._
-
-   val bw = new BufferedWriter(new FileWriter("/home/chonger/data/PTB/train-grammar.txt"))
-   
-   grammar.foreach({
-     case (t,v) => {
-       bw.write(t.fString(st) + "\n")
-       bw.write(v + "\n")
-     }
-   })
-
-   bw.close()
- }
-
-}
-
-object SampleICLE {
-
-  def main(args : Array[String]) : Unit = {
-
-    val singleT = Array(Array(100.0)) //the value doesnt matter
-    val singleA = Array(100.0)
-    val singleG = 1000000.0
-    val typeA = Array("pennTB")
-    
-    
-    val unk_bnp = "/home/chonger/data/ICLE/icle_bnp_unk.xml" //unked with collapsed bnps
-    val unk_normal = "/home/chonger/data/ICLE/icle_unk.xml" //unked
-    
     val st = new CFGSymbolTable()
-    val dox = XMLDoc.read(unk_bnp,st).map(x => new XMLDoc[ParseTree](x.text,Array(("goldLabel","pennTB"))))
+    val dox = XMLDoc.read(fBase + inF,st)
+
+    val typeA = (new scala.collection.mutable.HashSet[String]() ++ dox.map(_.getMeta("goldLabel"))).toArray
+    val nT = typeA.length
+
+    val (theta,alphas,gamma) = init(typeA)
+
     val pcfg = new PCFG(st,dox)
-    val esampler = new ESampler(dox,st,pcfg,typeA,singleA,singleG,singleT)
+    val esampler = new ESampler(dox,st,pcfg,typeA,alphas,gamma,theta)
     
-    esampler.doSampling(10,"/home/chonger/data/ICLE/icle-pp.txt")
+    esampler.doSampling(nIters,fBase + ppF)
     
-    esampler.saveSampled("/home/chonger/data/ICLE-sampled.txt")
-    
-    val grammar = esampler.getGrammar()
-    
-    import java.io._
-    
-    val bw = new BufferedWriter(new FileWriter("/home/chonger/data/ICLE/bnp-tsg.txt"))
-    
-    grammar.foreach({
-      case (t,v) => {
-        bw.write(t.fString(st) + "\n")
-      }
-    })
-    
-    bw.close()
+    esampler.saveSampled(fBase + sF)
   }
 
 }
 
+class SampleSingle extends SampleProg {
+  override def init(typeA : Array[String]) = {
+    val nT = typeA.length
+    val theta = Array.tabulate(nT)(x => Array(100.0))
+    val alphas = Array(100.0)
+    val gamma = 1000000.0 
+    (theta,alphas,gamma)
+  }
+}
+
+class SampleLDA(val n : Int) extends SampleProg {
+  override def init(typeA : Array[String]) = {
+    val nT = typeA.length
+    val theta = Array.tabulate(nT)(x => Array.tabulate(n)(y => 1.0))
+    val alphas = Array.tabulate(n)(x => 100.0)
+    val gamma = 1000.0 
+    (theta,alphas,gamma)
+  }
+}
+
+class SampleDiagonal(val gamma : Double) extends SampleProg {
+  override def init(typeA : Array[String]) = {
+    val nT = typeA.length
+    val theta = Array.tabulate(nT)(x => Array.tabulate(nT)(y => {
+      if(x == y)
+        1000000
+      else
+        0.00001
+    }))
+    val alphas = Array.tabulate(nT)(x => 100.0)
+    (theta,alphas,gamma)
+  }
+}
+
 object ContinueSample {
 
-  def main(args : Array[String]) = {
+  def apply(fBase : String, toSample : String, sampleFile : String, nIter : Int, ppFile : String, outFile : String) {
+    
+    val sampler = ESampler.continue(fBase + toSample,fBase + sampleFile)
 
-    val toSample = args(0)
-    val nIter = args(1).toInt
-    val ppFile = args(2)
-    val outFile = args(3)
-    val sampleFile = args(4)
+    sampler.doSampling(nIter,fBase + ppFile)
 
-    val sampler = ESampler.continue(toSample,sampleFile)
-
-    sampler.doSampling(nIter,ppFile)
-
-    sampler.saveSampled(outFile)
+    sampler.saveSampled(fBase + outFile)
     
   }
 
