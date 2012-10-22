@@ -91,7 +91,6 @@ class LMCompacter(val lowmem : LowMem, inTrees : Array[List[CSegment]]) extends 
     this(lowmem, (for(i <- 0 until nSyms) yield {List[CSegment]()}).toArray)
   }
 
-
   val store : Array[LMCompactTree] = inTrees.map(ar => { //for each nonterminal's e-trees
     val t = new LMCompactTree()
     ar.map(tree => t.add(lowmem,tree,tree.root))
@@ -162,11 +161,9 @@ class LMCompactTree() {
         ctree.recPrint(st)
       }
     })
-
     
     println("DONE printin")
   }
-
 
   def add(lowmem : LowMem, seg : CSegment, index : Int) : Unit = {
     val node = seg.tree.nodez(index)
@@ -289,4 +286,134 @@ class LMCompactTree() {
     ret
   }
 }
+/**
+class TAGCOD(val lowmem : LowMem, inTrees : Array[List[CSegment]], val footF : (CParseTree => Array[List[Int]])) {
 
+  def this(lowmem: LowMem, nSyms : Int,footF : (CParseTree => Array[List[Int]])) = {
+    this(pcfg,lowmem, (for(i <- 0 until nSyms) yield {List[CSegment]()}).toArray,footF)
+  }
+
+  val store : Array[PackTree] = inTrees.map(ar => { //for each nonterminal's e-trees
+    val t = new PackTree()
+    ar.map(tree => t.add(lowmem,tree,tree.root))
+    t
+  })
+
+  def findOverlays(tree : CParseTree, root : Int) : List[(CSegment,List[Int],List[(Int,Int)])] = {  
+    val sym = lowmem.lhsOfRule(tree.nodez(root).rule)
+    findTAG(tree,root,store(sym)).iterator.flatMap(_ match {
+      case (rtree,insts) => {
+        insts.map({
+          case (warps,leaves) => (rtree.tree,leaves,warps)
+        })
+      }
+    }).toList
+  }
+
+  def addTree(t : CSegment) = {
+    val sym = lowmem.rootLHS(t)
+    store(sym).add(lowmem,t,t.root)
+  }
+
+  def remTree(t : CSegment) = {
+    val sym = lowmem.rootLHS(t)
+    store(sym).remove(lowmem,t,t.root)
+  }                     
+  
+  def findTAG(ctree : CParseTree, index : Int, packed : PackTree) = {
+    val warps = footF(ctree)
+    
+    def recFindTAG(ctree : CParseTree, index : Int, packed : PackTree) : HashMap[CRefTree,List[(List[(Int,Int)],List[Int])]] = {
+      var ret = new HashMap[CRefTree,List[(List[(Int,Int)],List[Int])]]()
+      packed.endsHere.foreach(e => {
+        ret += e -> List((List[(Int,Int)](),List(index)))
+      })
+
+      val allopts = index :: warps(index)
+
+      allopts.foreach(ind => {
+
+        val targNode = ctree.nodez(ind)
+
+        if(targNode.isTerm) { 
+
+          val entry : PackTree = packed.terminalKids.getOrElse(targNode.rule,null)
+          if(entry != null) {
+            entry.endsHere.foreach(e => {
+              if(ind == index) {
+                ret += e -> List((List[(Int,Int)](),Nil))
+              } else {
+                ret += e -> List((List[(Int,Int)]((index,ind)),Nil))
+              }
+            })
+          }
+        } else {
+          val kids = ctree.getChildren(ind)
+          val myArity = kids.length
+
+          if(myArity <= packed.children.length) { //dont even bother if the arity is too big
+            var cindex = 0
+            
+            var bail = false
+
+            var compatMaps = kids.map(c => {
+              val bin = packed.children(cindex)
+              cindex += 1
+              val childNode = ctree.nodez(c)
+              val lhs = lowmem.lhsOfRule(childNode.rule)
+
+              val entry : PackTree = bin.getOrElse((lhs,myArity),null)
+              if(entry != null) {
+                recFindTAG(ctree,c,entry)
+              } else {
+                bail = true
+                null //this expansion cant be used, because there are no fragments with a child here
+              }
+            })
+
+
+            
+            if(!bail) {
+              //fragments that use this expansion must be in the maps for all of the children
+              //we must record all combinatorial ways that a fragment can be used (with all the different warps)
+
+              val goodFragz = (compatMaps(0).keySet /: compatMaps.drop(1))(_ intersect _.keySet)
+              
+              compatMaps = compatMaps.map(_.filter(goodFragz contains _._1))
+
+              goodFragz.foreach(f => {
+                val ents = compatMaps.map(m => m(f))
+
+                val comb = (ents(0) /: ents.drop(1))((a,b) => {
+                  a.flatMap({
+                    case (wA,lA) => {
+                      b.map({
+                        case (wB,lB) => {
+                          (wA ::: wB,lA ::: lB)
+                        }
+                      })
+                    }
+                  })
+                })
+
+                comb.foreach({
+                  case (w,l) => {
+                    val e = (w,l) :: ret.getOrElse(f,Nil)
+                    ret += f -> e
+                  }
+                })
+              })
+            }
+          }
+        }
+      })              
+
+      ret
+    } //end of recursive bit
+
+    val ret = recFindTAG(ctree, index, packed)
+
+    ret
+  }
+}
+*/

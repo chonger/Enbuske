@@ -233,24 +233,26 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
   def getGrammar(typeInd : Int) : Array[(ParseTree,Double)] = {
     val rawCounts = new HashMap[ParseTree,Double]()
 
-    model.treemap.foreach(_.foreach({
-      case (seg,(b,cs)) => {
+    val tz = new HashSet[CSegment]() ++ model.treemap.flatMap(_.map(_._1))
 
-        val scores = model.scoreET(seg)
+    tz ++= TreeTools.cfgSet(tz.map(x => lowmem.revert(x)).toList).map(x => {
+      lowmem.convert(new ParseTree(x.root) with Markers)
+    }).map(x => {
+      new CSegment(x,0,x.nodez.map(y => true))
+    }).toList
 
-        val p = (0.0 /: 0.until(numTopics))((a,i) => {
-          model.topicProb(i,typeInd) * scores(i)
+    tz.foreach(seg => {
+
+      val scores = model.scoreET(seg)
+
+      val p = (0.0 /: 0.until(numTopics))((a,i) => {
+        model.topicProb(i,typeInd) * scores(i)
         })
-
-        rawCounts += lowmem.revert(seg) -> p
-      }
-    }))
-
-    TreeTools.cfgSet(rawCounts.iterator.map(_._1).toList).foreach(x => {
-      if(!(rawCounts contains x))
-        rawCounts += x -> 1
+      
+      rawCounts += lowmem.revert(seg) -> p
+      
     })
-
+    
     val norm = new HashMap[Int,Double]() 
 
     rawCounts.foreach({
@@ -264,6 +266,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
         (t,c.toDouble/norm(t.root.symbol))
       }
     })
+
   }
 
 
@@ -366,7 +369,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
     println("T = iteration elapsed time")
     println("L = log likelihood")
     println("Z = number of cached trees")
-    println("C = percent of nodes that were changed")
+//    println("C = percent of nodes that were changed")
     println("ACC = accuracy on unsupervised portion")
     println("FAIL = number of underflows")
     println()
@@ -445,7 +448,8 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
       var semiTot = Array.tabulate(model.numTypes)(x => 0)
         
       println("I-(" + dispString + ")\tT>{" + timeString + "}\tL_[" + llString + "]\tZ<" + sizeStr + 
-              ">\tC!" + chgStr + "\tFAIL=" + fails)
+              //">\tC!" + chgStr + 
+              "\tFAIL=" + fails)
   
       processedTrees = 0
       totalChanged = 0
@@ -554,7 +558,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
         val kProbs = tree.getChildren(index).map(c => {
           val cNode = tree.nodez(c) //child node
           val beta = model.base.betas(lowmem.lhsOfRule(cNode.rule)) //the beta for this child node
-          val (iS,iP,opts) = insideProbs(c) //get the DynProg cell for the child
+          val (iS,iP,opts) = insideProbs(c) //get the ynProg cell for the child
 
           /**
            * iS is an array across grammars of the inside prob of being in grammar i,
@@ -642,7 +646,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
 
   def resampleDerivation(tree : CParseTree, insideProbs : Array[IProb], label : Int) = {
 
-    val origMarks = tree.nodez.map(_.mark) //DIAGNOSTIC 
+    //val origMarks = tree.nodez.map(_.mark) //DIAGNOSTIC 
     
     tree.clearMarks()
 
@@ -740,14 +744,14 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
     }
     
     recSample(0,false,-1)
-
+/**
     //DIAGNOSTIC!!!
     val newMarks = tree.nodez.map(_.mark)  
     (origMarks zip newMarks).foreach(x => {
       if(x._1 != x._2)
         totalChanged += 1
     })
-
+*/
   }
 
 }

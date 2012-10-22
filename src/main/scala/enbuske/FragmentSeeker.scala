@@ -137,6 +137,7 @@ object FoldedCounter {
   }
 }
 
+
 object FragmentSeeker {
 
   def main(args : Array[String]) = {
@@ -220,28 +221,22 @@ object FragmentSeeker {
 
 }
 
-
-
-import scala.collection.mutable.{HashSet,HashMap}
-
-class FragmentSeeker(val pcfg : PCFG) {
-
+*/
+/**
+class FragmentSeeker(val st : CFGSymbolTable) {
 
   class SeekCell(val i : Int, val j : Int, val star : Boolean, val fill : Boolean) {
-
     var top = if(fill) true else false
     val indSet = new HashSet[Int]()
-
   }
 
-  def seekNSave(dox : Array[enbuske.util.EnbuDoc] , filE : String) : Unit = {
+  def seekNSave(dox : Array[XMLDoc] , filE : String) : Unit = {
     seekNSave(dox,filE,0,1)
   }
 
-  def seekNSave(dox : Array[enbuske.util.EnbuDoc] , filE : String,fold : Int, nFolds : Int) : Unit = {
-    var lowmem = new LowMem(pcfg)
-    val ctreez = dox.flatMap(_.sents().map(x => lowmem.convert(new ParseTree(x.root) with Markers)))
-
+  def seekNSave(dox : Array[XMLDoc] , filE : String,fold : Int, nFolds : Int) : Unit = {
+    var lowmem = new LowMem(st)
+    val ctreez = dox.flatMap(_.text.map(x => lowmem.convert(new ParseTree(x.root) with Markers)))
     val grammarSet = seekC(ctreez,lowmem,fold,nFolds)    
     pcfg.write(filE,grammarSet.iterator.map(x => lowmem.revert(x)).toList)
   }

@@ -31,7 +31,7 @@ class SampleSingle extends SampleProg {
     val nT = typeA.length
     val theta = Array.tabulate(nT)(x => Array(100.0))
     val alphas = Array(100.0)
-    val gamma = 1000000.0 
+    val gamma = 1000000.0 //bypasses smoothing grammar
     (theta,alphas,gamma)
   }
 }
@@ -46,6 +46,11 @@ class SampleLDA(val n : Int) extends SampleProg {
   }
 }
 
+/**
+ *
+ *    Gamma is inversely related to the amount of smoothing
+ * 
+ */ 
 class SampleDiagonal(val gamma : Double) extends SampleProg {
   override def init(typeA : Array[String]) = {
     val nT = typeA.length
@@ -74,82 +79,43 @@ object ContinueSample {
 
 }
 
-
-/**
 object CollectSamples {
-
-  /**
-   *
-  * args
-  * 0 - samplin data
-  * 1 - number of iterations for collection
-  * 2 - posteriorFile (not used)
-  * 3 - outFile
-  * 5 - nTopics
-  * 7 - initialization file
-  * 8 - number of collections
-  * 9 - testFile (to build the analyzers)
-  *
-  */ 
   
-  def main(args : Array[String]) = {
+  def apply(fBase : String, toSample : String, sampleFile : String, betweenSamples : Int, nSamples : Int) : Array[PTSG] = {
 
-    val iterN = args(1).toInt
-    val posteriorFile = args(2)
-    val outFile = args(3)
-    val ssSplit = args(4).toDouble
-    val nTopics = args(5).toInt
-    val modelType = args(6)
-    val collectN = args(8).toInt
-    val testF = args(9)
+    val sampler = ESampler.continue(fBase + toSample,fBase + sampleFile)
 
-    val sampler = ESampler.getFromXML(args(0),ssSplit,nTopics,modelType,args(7))
+    val st = sampler.st
 
-    var pcfg : PCFG = null
-    var typeXgrammar : Array[Array[Double]] = null
-    var treeMap : Array[HashMap[ParseTree,Array[Double]]] = null
-    var tset : Array[String] = null
+    val ptsgs = sampler.getPTSGs()
 
-    0.until(collectN).foreach(x => {
-      sampler.doSampling(iterN,null)
-      sampler.saveSampled(outFile + "__tmp")
-      val anal = Analyzer.fromSampled(args(0),outFile + "__tmp",testF)
-      if(pcfg == null) {
-        pcfg = anal.pcfg
-        tset = anal.typeset
-        typeXgrammar = anal.typeXgrammar.map(_.map(x => 0.0).toArray)
-        treeMap = anal.treeMap.map(x => new HashMap[ParseTree,Array[Double]]())
-      }
-                                 
-      var i = 0
+    0.to(nSamples).foreach(i => {
+      sampler.doSampling(betweenSamples,null)
+      
+      val newPTSGs = sampler.getPTSGs()
 
-      typeXgrammar = anal.typeXgrammar.map(y => {
-        var j = 0
-        val r = y.map(x => {
-          println("i = " + i)
-          println("j = " + j)
-          val r2 = typeXgrammar(i)(j) + anal.typeXgrammar(i)(j) / collectN.toDouble
-          j += 1
-          r2
-        })
-        i += 1
-        r
+      (ptsgs zip newPTSGs).foreach({
+        case (p1,p2) => {
+          p2.rules.foreach(_.iterator.foreach(r => {
+            val rr = r._1.root.symbol
+            p1.rules(rr)(r._1) = p1.rules(rr).getOrElse(r._1,0.0) + r._2
+          }))
+        }
       })
-      0.until(anal.nSyms).foreach(s => {
-        anal.treeMap(s).iterator.foreach(_ match {case (et,probs) => {
-          val en = treeMap(s).getOrElse(et,Array.tabulate(anal.nGrammar)(x => 0.0))
-          val newScores = (en zip probs).map(x => x._1 + x._2 / collectN.toDouble).toArray
-          treeMap(s) += et -> newScores
-        }})
+
+    })
+
+    ptsgs.foreach(p => {
+      p.rules.foreach(rm => {
+        rm.iterator.foreach({
+          case (r,d) => rm(r) = d/(nSamples).toDouble
+        })
       })
     })
 
-    val analOut = new Analyzer(pcfg,typeXgrammar,treeMap,tset)
+    ptsgs
 
-    analOut.save(outFile)
-
-    1
   }
   
 }
-*/
+
