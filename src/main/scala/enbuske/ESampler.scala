@@ -224,7 +224,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
     0.until(numTypes).map(i => {
       val rM = getGrammar(i).groupBy(_._1.root.symbol)
       val rules : Array[HashMap[ParseTree,Double]] = Array.tabulate(st.syms.size)(x => {
-        new HashMap[ParseTree,Double]() ++ rM(x)
+        new HashMap[ParseTree,Double]() ++ rM.getOrElse(x,Array[(ParseTree,Double)]())
       })
       new PTSG(st,rules)
     }).toArray

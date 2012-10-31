@@ -90,6 +90,9 @@ object CollectSamples {
     val ptsgs = sampler.getPTSGs()
 
     0.to(nSamples).foreach(i => {
+
+      println("COLLECTION " + i)
+
       sampler.doSampling(betweenSamples,null)
       
       val newPTSGs = sampler.getPTSGs()
