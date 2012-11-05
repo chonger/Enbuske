@@ -137,6 +137,10 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
   model = new TopicTypeTSG(nSyms,numTopics,numTypes,theta,new CohnBase(lowmem,nSyms,100,100),alphas,gamma,lowmem)  
 
   if(autoload) {
+    autoLoad()
+  }
+
+  def autoLoad() {
     //STEP 1 - insert all the information in caches
     println("Autoloading caches")
     
@@ -451,6 +455,8 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
               //">\tC!" + chgStr + 
               "\tFAIL=" + fails)
   
+      iterInfo()
+      
       processedTrees = 0
       totalChanged = 0
       doneIters += 1
@@ -458,6 +464,10 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
 
     if(filE != null)
       bw.close()
+  }
+
+  def iterInfo() : Unit = {
+    //do nothing
   }
 
   //Short for Substitution Move.  
@@ -697,25 +707,6 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
           fails += 1
           sampInd = rando.nextInt(sampOpts.length)
         }
-        /**
-        var mxI = 0
-        var mxV = sampOpts(0)._1
-        1.until(sampOpts.length).foreach(x => {
-          val p = sampOpts(x)._1
-          if(p > 1 || p < 0) {
-            println("BAD PROB!")
-            sampOpts.foreach(x => println(x))
-            throw new Exception()
-          }
-          if(sampOpts(x)._1 > mxV) {
-            mxV = sampOpts(x)._1
-            mxI = x
-          } 
-        })
-        val sampInd = mxI
-*/
-        //println("OPTS - " + sampOpts.toArray.mkString(","))
-        //println("Chose " + sampOpts(sampInd))
 
         cNode.aspect = sampOpts(sampInd)._2.toChar //set the grammar index 
         val (seg,lvs,probs) = sampOpts(sampInd)._3 //get the sampled move instructions out
@@ -728,14 +719,6 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
             } 
             case (tree,leevs) => {
               leevs.foreach(l => {
-
-                /**
-                if(l <= index) {  //DIAGNOSTIC
-                  println(index + " - " + leevs.mkString(","))
-                  throw new Exception()
-                }
-                */
-
                 recSample(l,false,-1)
               })
             }
