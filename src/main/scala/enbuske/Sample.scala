@@ -6,6 +6,26 @@ abstract class SampleProg {
 
   def init(typeA : Array[String]) : (Array[Array[Double]],Array[Double],Double) 
 
+  def apply(fBase : String,inF : String,semiF : String, nIters : Int,ppF : String,sF : String) : Unit = {
+    val st = new CFGSymbolTable()
+    val dox = XMLDoc.read(inF,st)
+    val sdox = XMLDoc.read(semiF,st)
+
+    val typeA = (new scala.collection.mutable.HashSet[String]() ++ dox.map(_.getMeta("goldLabel"))).toArray
+    val nT = typeA.length
+
+    val (theta,alphas,gamma) = init(typeA)
+    
+    val allDox = (dox.toList ::: sdox.toList).toArray
+    val pcfg = new PCFG(st,allDox)
+
+    val esampler = new SemiSampler(allDox,st,pcfg,typeA,alphas,gamma,theta,dox.length)
+    
+    esampler.doSampling(nIters,fBase + ppF)
+    
+    esampler.saveSampled(fBase + sF)
+  }
+
   def apply(fBase : String,inF : String,nIters : Int,ppF : String,sF : String) : Unit = {
 
     val st = new CFGSymbolTable()

@@ -5,21 +5,6 @@ import scala.collection.mutable.{HashMap,HashSet}
 import java.io.{BufferedWriter,FileWriter,File}
 import scala.collection.mutable.ArrayBuffer
 
-
-object SemiSampler {   
-  def create(labeledF : String, unlabeledF : String, 
-             typeArr : Array[String], gamma : Double, 
-             alphas : Array[Double], theta : Array[Array[Double]]) = {
-    val st = new CFGSymbolTable()
-    val lDox = XMLDoc.read(labeledF,st)
-    val uDox = XMLDoc.read(unlabeledF,st)
-    val allDox = (lDox.toList ::: uDox.toList).toArray
-    val pcfg = new PCFG(st,allDox)
-    new SemiSampler(allDox,st,pcfg,typeArr,alphas,gamma,theta,lDox.length)
-  }
-}
-
-
 class SemiSampler(originalDox : Array[XMLDoc[ParseTree]], 
                st : CFGSymbolTable,
                pcfg : PCFG,
