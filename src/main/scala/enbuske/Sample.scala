@@ -4,9 +4,15 @@ import multitool._
 
 abstract class SampleProg {
 
+  /**
+   *  From an array of type names, produce thetas, alphas, and gamma
+   */ 
   def init(typeA : Array[String]) : (Array[Array[Double]],Array[Double],Double) 
 
-  def apply(fBase : String,inF : String,semiF : String, nIters : Int,ppF : String,sF : String) : Unit = {
+  /**
+   *  Semi-supervised sampling
+   */ 
+  def apply(inF : String, semiF : String, nIters : Int,ppF : String,sF : String) : Unit = {
     val st = new CFGSymbolTable()
     val dox = XMLDoc.read(inF,st)
     val sdox = XMLDoc.read(semiF,st)
@@ -17,31 +23,31 @@ abstract class SampleProg {
     val (theta,alphas,gamma) = init(typeA)
     
     val allDox = (dox.toList ::: sdox.toList).toArray
-    val pcfg = new PCFG(st,allDox)
+    val pcfg = PTSG.mlPCFG(st,allDox.flatMap(_.text).toList)
 
     val esampler = new SemiSampler(allDox,st,pcfg,typeA,alphas,gamma,theta,dox.length)
-    
-    esampler.doSampling(nIters,fBase + ppF)
-    
-    esampler.saveSampled(fBase + sF)
+    esampler.doSampling(nIters,ppF)
+    esampler.saveSampled(sF)
   }
 
-  def apply(fBase : String,inF : String,nIters : Int,ppF : String,sF : String) : Unit = {
+  /**
+   *  Supervised Sampling
+   */ 
+  def apply(inF : String,nIters : Int,ppF : String,sF : String) : Unit = {
 
     val st = new CFGSymbolTable()
-    val dox = XMLDoc.read(fBase + inF,st)
+    val dox = XMLDoc.read(inF,st)
 
     val typeA = (new scala.collection.mutable.HashSet[String]() ++ dox.map(_.getMeta("goldLabel"))).toArray
     val nT = typeA.length
 
     val (theta,alphas,gamma) = init(typeA)
 
-    val pcfg = new PCFG(st,dox)
+    val pcfg = PTSG.mlPCFG(st,dox.flatMap(_.text).toList)
     val esampler = new ESampler(dox,st,pcfg,typeA,alphas,gamma,theta)
     
-    esampler.doSampling(nIters,fBase + ppF)
-    
-    esampler.saveSampled(fBase + sF)
+    esampler.doSampling(nIters,ppF)    
+    esampler.saveSampled(sF)
   }
 
 }
@@ -56,7 +62,7 @@ class SampleSingle extends SampleProg {
   }
 }
 
-class SampleLDA(val n : Int) extends SampleProg {
+class SampleMix(val n : Int) extends SampleProg {
   override def init(typeA : Array[String]) = {
     val nT = typeA.length
     val theta = Array.tabulate(nT)(x => Array.tabulate(n)(y => 1.0))
@@ -87,23 +93,27 @@ class SampleDiagonal(val gamma : Double) extends SampleProg {
 
 object ContinueSample {
 
-  def apply(fBase : String, toSample : String, sampleFile : String, nIter : Int, ppFile : String, outFile : String) {
-    
-    val sampler = ESampler.continue(fBase + toSample,fBase + sampleFile)
+  /**
+   *   The parameters are stored in the sample file
+   */ 
 
-    sampler.doSampling(nIter,fBase + ppFile)
-
-    sampler.saveSampled(fBase + outFile)
-    
+  def apply(toSample : String, sampleFile : String, nIter : Int, ppFile : String, outFile : String) {
+    val sampler = ESampler.continue(toSample,sampleFile)
+    sampler.doSampling(nIter,ppFile)
+    sampler.saveSampled(outFile)
   }
-
 }
 
+/**
+ *
+ *   Monte Carlo integral over derivations
+ * 
+ */ 
 object CollectSamples {
   
-  def apply(fBase : String, toSample : String, sampleFile : String, betweenSamples : Int, nSamples : Int) : Array[PTSG] = {
+  def apply(toSample : String, sampleFile : String, betweenSamples : Int, nSamples : Int) : Array[PTSG] = {
 
-    val sampler = ESampler.continue(fBase + toSample,fBase + sampleFile)
+    val sampler = ESampler.continue(toSample,sampleFile)
 
     val st = sampler.st
 

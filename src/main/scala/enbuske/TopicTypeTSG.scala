@@ -173,7 +173,6 @@ class TopicTypeTSG(val nSyms : Int,
           }).toList
           //aggregate over the states to get table counts
           val rt = (0 /: stateXtable)(_ + _)
-          //println(PCFGPrinter.treeToString(DH.pcfg,lowmem.revert(seg)))
           //println(rt)
           rt
         }
@@ -186,7 +185,6 @@ class TopicTypeTSG(val nSyms : Int,
       var bTot = 0
       (theseSegs zip tables(i)).foreach(_ match {
         case ((seg,(bC,counts)),newBC) => {
-          //println(PCFGPrinter.treeToString(DH.pcfg,lowmem.revert(seg)))
           //println("BETA - " + newBeta)
           bTot += newBC
           treemap(i) += (seg -> (newBC,counts))

@@ -10,14 +10,14 @@ object ESampler {
   def create(filE : String,typeArr : Array[String], gamma : Double, alphas : Array[Double], theta : Array[Array[Double]]) = {
     val st = new CFGSymbolTable()
     val dox = XMLDoc.read(filE,st)
-    val pcfg = new PCFG(st,dox)
+    val pcfg = PTSG.mlPCFG(st,dox.flatMap(_.text).toList)
     new ESampler(dox,st,pcfg,typeArr,alphas,gamma,theta)
   }
 
   def continue(filE : String, sampFile : String) = {    
     val st = new CFGSymbolTable()
     val dox = XMLDoc.read(filE,st)
-    val pcfg = new PCFG(st,dox)
+    val pcfg = PTSG.mlPCFG(st,dox.flatMap(_.text).toList)
 
     println("Initializing the sampler with a previously sampled TSG")
 
@@ -53,7 +53,7 @@ object ESampler {
 
 class ESampler(originalDox : Array[XMLDoc[ParseTree]], 
                val st : CFGSymbolTable,
-               val pcfg : PCFG,
+               val pcfg : PTSG,
                val typeArr : Array[String],
                alphas : Array[Double],
                gamma : Double,
@@ -62,7 +62,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
   
   def this(originalDox : Array[XMLDoc[ParseTree]], 
            st : CFGSymbolTable,
-           pcfg : PCFG,
+           pcfg : PTSG,
            typeArr : Array[String],
            alphas : Array[Double],
            gamma : Double,

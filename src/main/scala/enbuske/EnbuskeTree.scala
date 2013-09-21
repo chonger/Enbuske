@@ -2,6 +2,14 @@ package enbuske
 
 import multitool._
 
+
+/**
+ *
+ *  Traits for Multitool Trees
+ *
+ */ 
+
+
 trait Aspect extends ParseTree {
   import scala.collection.mutable.{HashMap,HashSet}
   var aspect = new HashMap[RefWrapper,Int]()
@@ -78,6 +86,16 @@ trait Markers extends ParseTree {
   markers += new RefWrapper(root) //the root is always marked
 }
 
+
+
+/**
+ *
+ *  Trees used by Lowmem
+ *
+ */ 
+
+
+
 class CNode(val rule : Int, val parent : Char, val sibling : Char, var mark : Boolean, val isTerm : Boolean, var aspect : Char) {
   def this(rule : Int, parent : Char, sibling : Char, mark : Boolean, isTerm : Boolean) = {
     this(rule,parent,sibling,mark,isTerm,0)
@@ -103,7 +121,7 @@ class CParseTree(val nodez : Array[CNode]) {
   }
 
   def getChildren(index : Int) : List[Int] = {
-    //println("GET KIDS FOR : " + index)
+
     val cn = nodez(index)
     if(cn.isTerm)
       Nil
@@ -117,7 +135,7 @@ class CParseTree(val nodez : Array[CNode]) {
         n = nodez(cInd)
         kids ::= cInd
       }
-      //println("KIDS = " + kids.mkString(","))
+
       kids.reverse
     }
   }
@@ -129,20 +147,6 @@ class CParseTree(val nodez : Array[CNode]) {
     })
   }
 
-}
-
-class CTagSeg(tree : CParseTree, root : Int, marks : Array[Boolean], val warps : Array[Int])
-extends CSegment(tree,root,marks) {
-
-  override def print() = {
-    super.print()
-    println("WARPS - " + warps.mkString(","))
-    println("MARKS - " + marks.mkString(","))
-  }
-
-  override def toString() = {
-    "TAGSEG R-" + root +  " - W: " + warps.mkString(",") + " M: " + marks.mkString(",")
-  }
 }
 
 class CSegment(val tree : CParseTree, val root : Int, val marks : Array[Boolean]) {

@@ -7,7 +7,7 @@ import scala.collection.mutable.ArrayBuffer
 
 class SemiSampler(originalDox : Array[XMLDoc[ParseTree]], 
                st : CFGSymbolTable,
-               pcfg : PCFG,
+               pcfg : PTSG,
                typeArr : Array[String],
                alphas : Array[Double],
                gamma : Double,
@@ -62,8 +62,6 @@ class SemiSampler(originalDox : Array[XMLDoc[ParseTree]],
           x(i) * sc
         }).toArray
       })
-      
-
 
       var sampInd = sampleUnNormalized(margP)
       if(sampInd == -1)

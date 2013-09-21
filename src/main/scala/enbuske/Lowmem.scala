@@ -2,12 +2,12 @@ package enbuske
 
 import multitool._
 
-class LowMem(pcfg : PCFG, st : CFGSymbolTable) {
+class LowMem(pcfg : PTSG, st : CFGSymbolTable) {
 
   import scala.collection.mutable.HashMap
 
   var lhsOfRule : Array[Int] = null //record the index of a rule's lhs
-  var pcfgProbs : Array[Double] = null
+  var pcfgProbs : Array[Double] = null //probabilities of 
 
   var rulemap = new HashMap[TreeRule,Int]() //record the enumeration of all rules  
   var termmap = new HashMap[Int,Int]()
@@ -23,7 +23,7 @@ class LowMem(pcfg : PCFG, st : CFGSymbolTable) {
     rulemap = null
   }
   
-  def genMaps(pcfg : PCFG) {
+  def genMaps(pcfg : PTSG) {
 
     rulemap = new HashMap[TreeRule,Int]() //record the enumeration of all rules  
     termmap = new HashMap[Int,Int]() //a map of terminals to rules that derive them
@@ -35,21 +35,21 @@ class LowMem(pcfg : PCFG, st : CFGSymbolTable) {
     var probs : List[Double] = Nil
     var lhsL : List[Int] = Nil
     var termL : List[Int] = Nil
+    
+    pcfg.rules.foreach(_.iterator.foreach({
+      case (tree,prob) => {
+        assert(tree.isPCFG())
+        rulemap += (tree.root.rule -> index)
+        tree.root match {
+          case ptn : PreTerminalNode => termmap += index -> ptn.kid.terminal
+          case _ => {} //do nothing
+        }
+        probs ::= prob
+        lhsL ::= tree.root.symbol
+        index += 1
+      }
+    }))
 
-    pcfg.rules.foreach(rule => {
-      rulemap += (rule._1 -> index)
-      probs ::= rule._2
-      lhsL ::= rule._1.lhs
-      index += 1
-    })
-
-    pcfg.lexiconRules.foreach(rule => {
-      rulemap += (rule._1 -> index)
-      termmap += index -> rule._1.terminal
-      probs ::= rule._2
-      lhsL ::= rule._1.lhs
-      index += 1
-    })
 /**  
     println("LOWMEM Rules")
     rulemap.elements.foreach(r => {
@@ -141,44 +141,6 @@ class LowMem(pcfg : PCFG, st : CFGSymbolTable) {
  
   def revert(cseg : CSegment) : ParseTree = {
 
-    def makeTAGNode(s : CTagSeg, i : Int) : NonTerminalNode = {
-      var segNode = s.tree.nodez(i)
-      var stub = i != s.root && s.marks(i) //&& s.warps(i) < 0
-      val lhs = lhsOfRule(segNode.rule)
-      var indo = i
-//      print("TAGN - " + i)
-      if(stub) {
-  //      println(" STUB")
-        new UnderspecifiedNode(lhs,null)
-      } else {
-        if(s.warps(i) != -1) {
-          indo = s.warps(i)
-    //      print (" WARP to " + indo)
-          segNode = s.tree.nodez(indo)
-          stub = indo != s.root && s.marks(indo) && s.warps(indo) < 0
-        }
-        if(stub) {
-      //    println(" STUB")
-          new UnderspecifiedNode(lhs,null)
-        } else {
-        //  println(" NOTSTUB")
-          if(segNode.isTerm) {
-            val lhs = lhsOfRule(segNode.rule)
-            val term = termmap(segNode.rule)
-            new PreTerminalNode(lhs,new TerminalNode(term))
-          } else {
-            val ch = s.tree.getChildren(indo).map(x => makeTAGNode(s,x))
-            if(ch.length == 0) {
-              println(i)
-              println(s.warps(i))
-              throw new Exception()
-            }
-            new ProtoNode(lhs,ch)
-          }
-        }
-      }
-    }
-    
     def makeNode(s : CSegment, i : Int) : NonTerminalNode = {
 
       val segNode = s.tree.nodez(i)
@@ -199,18 +161,9 @@ class LowMem(pcfg : PCFG, st : CFGSymbolTable) {
       }
     }
 
-    cseg match {
-      case cts : CTagSeg => {
-  //      println(cts)
-        val r = new ParseTree(makeTAGNode(cts,cts.root))
-        //      println(PCFGPrinter.treeToString(pcfg,r))
-        r
-      } 
-      case _ =>  {
-//        println("   !          <>               !")
-        new ParseTree(makeNode(cseg,cseg.root))
-      }
-    }
+
+    new ParseTree(makeNode(cseg,cseg.root))
+    
   }
 }
 
