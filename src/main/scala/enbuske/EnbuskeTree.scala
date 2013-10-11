@@ -207,31 +207,38 @@ class CSegment(val tree : CParseTree, val root : Int, val marks : Array[Boolean]
     }
   }
 
+  def nodesEq(t : CSegment) = {
+    if(myHash != t.myHash)
+      return false
+	val myNodes = getNodes()
+    val oNodes = t.getNodes()
+    if(myNodes.length != oNodes.length)
+      return false
+    (myNodes zip oNodes).foreach(_ match {
+      case ((mI,mS),(oI,oS)) => {
+        if(mS != oS)
+          return false
+        val mN = tree.nodez(mI)
+        val oN = t.tree.nodez(oI)
+        if(!mS) { //if they're stubs then they automatically match
+          if(mN.rule != oN.rule)
+            return false
+        }
+      }
+    })
+    true
+  }
+
   override def equals(any : Any) : Boolean = {
 	any match {
 	  case t : CSegment => {
-		val myNodes = getNodes()
-        val oNodes = t.getNodes()
-        if(myNodes.length != oNodes.length)
-          return false
-        (myNodes zip oNodes).foreach(_ match {
-          case ((mI,mS),(oI,oS)) => {
-            if(mS != oS)
-              return false
-            val mN = tree.nodez(mI)
-            val oN = t.tree.nodez(oI)
-            if(!mS) { //if they're stubs then they automatically match
-              if(mN.rule != oN.rule)
-                return false
-            }
-          }
-        })
-        true
+        nodesEq(t)
 	  }
 	  case _ => false
 	}	
   }
-  lazy val myHash = {
+  
+  def nodesHash() = {
     val nodez = getNodes()
     var shift = 0
     (0 /: nodez)((a,n) => {
@@ -248,6 +255,9 @@ class CSegment(val tree : CParseTree, val root : Int, val marks : Array[Boolean]
       ret
     })
   }
+
+  def getHash() = nodesHash()
+  lazy val myHash = getHash()
   override def hashCode() : Int = myHash
 }
 

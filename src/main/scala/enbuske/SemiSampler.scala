@@ -62,6 +62,8 @@ class SemiSampler(originalDox : Array[XMLDoc[ParseTree]],
           x(i) * sc
         }).toArray
       })
+      
+
 
       var sampInd = sampleUnNormalized(margP)
       if(sampInd == -1)

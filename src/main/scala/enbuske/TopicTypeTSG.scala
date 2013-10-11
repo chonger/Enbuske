@@ -83,6 +83,10 @@ class TopicTypeTSG(val nSyms : Int,
     }
   }
 
+  def pcfgScore(n : CNode) = {
+    lowmem.pcfgProbs(n.rule) //start with the pcfg prob        
+  }
+
   //this should be the prob mass that comes from sitting at a real table -
   //this means either we sit at a table in this restaurant or in the base
   def tableScores(t : CSegment) : Array[Double] = {

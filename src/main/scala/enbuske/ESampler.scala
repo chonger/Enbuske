@@ -133,7 +133,7 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
 
   val nSyms = st.syms.size
 
-  //WARNING MAGIC NUMBERS IN BASE CONSTRUCTOR
+  //WARNING MAGIC NUMBERS IN BASE CONSTRUCTOR (beta prior used in resample)
   model = new TopicTypeTSG(nSyms,numTopics,numTypes,theta,new CohnBase(lowmem,nSyms,100,100),alphas,gamma,lowmem)  
 
   if(autoload) {
@@ -547,20 +547,18 @@ class ESampler(originalDox : Array[XMLDoc[ParseTree]],
 
       //the probability of leaving this node primed and deriving the subtree below n
       //there's one value for each grammar
+      val pcfgProb = model.pcfgScore(n)
       val primeProbs : Array[Double] = if(n.isTerm) {
         //for a terminal theres just the rule, the pcfg prob is all there is to it
-        (for(i <- 0 until model.numTopics) yield {
-          lowmem.pcfgProbs(n.rule) 
-        }).toArray
+        Array.tabulate(model.numTopics)(x => pcfgProb)
       } else {
+
         //now weve got to compute the prob of leaving this node primed
 
         //this requires making one pcfg move and then for each child
         //either continuting in prime or leaving prime and starting a 
         //new move.
 
-        val pcfgProb = lowmem.pcfgProbs(n.rule) //start with the pcfg prob        
-        
         //get the prob of arriving at each child in prime
         //this equals the probability of leaving it prime +
         // the prob of ending prime there and starting a new subst.
