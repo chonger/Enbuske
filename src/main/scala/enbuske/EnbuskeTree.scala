@@ -207,7 +207,7 @@ class CSegment(val tree : CParseTree, val root : Int, val marks : Array[Boolean]
     }
   }
 
-  def nodesEq(t : CSegment) = {
+  def nodesEq(t : CSegment) : Boolean = {
     if(myHash != t.myHash)
       return false
 	val myNodes = getNodes()
